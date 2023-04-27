@@ -1,5 +1,8 @@
 from dataclasses import dataclass
 
+x_min, x_max = -2.0, 1.0
+y_min, y_max = -1.5, 1.5
+
 @dataclass
 class MandelSet:
     result: str
@@ -12,11 +15,7 @@ def mandelbrot_set(c: complex, max_iter: int) -> int:
         n += 1
     return n
 
-def mandel(max_iter: int) -> MandelSet:
-    width = 80
-    height = 40
-    x_min, x_max = -2.0, 1.0
-    y_min, y_max = -1.5, 1.5
+def mandel(max_iter: int, height: int, width:int) -> MandelSet:
     x_step = (x_max - x_min) / width
     y_step = (y_max - y_min) / height
 

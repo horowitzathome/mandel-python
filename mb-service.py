@@ -8,9 +8,9 @@ app.route('/actuator/health', methods=['GET'])
 def health():
     return 'health'
 
-@app.route('/mandel_python/mandel_text_memory/<int:max_iter>', methods=['GET'])
-def get_mandelbrot(max_iter):
-    mandel_result = mandelbrot.mandel(max_iter)
+@app.route('/mandel_python/mandel_text_memory/<int:max_iter>/<int:height>/<int:width>', methods=['GET'])
+def get_mandelbrot(max_iter, height, width):
+    mandel_result = mandelbrot.mandel(max_iter, height, width)
     #return jsonify({"result": mandel_result.result})
     return mandel_result.result
 
