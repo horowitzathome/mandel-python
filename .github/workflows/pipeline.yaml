@@ -12,7 +12,7 @@ jobs:
   build:
     uses: horowitzathome/rust-workflows/.github/workflows/build_java.yaml@main
     with:
-      image: horowitzathome/mandel-java
+      image: horowitzathome/mandel-python
       version-file: version.txt
     secrets:
       container-registry-username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
