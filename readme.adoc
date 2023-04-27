@@ -1,0 +1,88 @@
+= Mandelbrot Service
+
+Mandelbrot Service is a simple REST service that generates ASCII representations of the Mandelbrot set. The service is implemented in Python using the Flask framework and can be run using Podman.
+
+== Prerequisites
+
+To run this project, you will need:
+
+* Python 3.x
+* Flask
+
+== Running the application
+
+=== Using Python
+
+To run the application using Python, follow these steps:
+
+. Clone this repository and navigate to the project's root directory in your terminal.
+
+. Install the required dependencies using `pip`: 
++
+Before installing requirements for the application, you may want to create a virtual environment. To create a virtual environment, run:
++
+[source,bash]
+----
+python -m venv .venv --prompt mandelbrot
+
+# On Windows:
+.venv\Scripts\activate.bat
+
+# On Linux or FreeBSD:
+source .venv/mandelbrot/bin/activate
+----
++
+After that you can install the required dependencies using `pip`:
++
+[source,bash]
+----
+pip install -r requirements.txt
+----
+
+. Run the application using Python:
++
+[source,bash]
+----
+python mb-service.py
+----
+
+
+=== Using Podman
+
+First, ensure that you have Podman installed on your system. You can find the installation instructions for your platform in the https://podman.io/getting-started/installation.html[official Podman documentation].
+
+To build and run the application using Podman, follow these steps:
+
+. Clone this repository and navigate to the project's root directory in your terminal.
+
+. Build the container image using Podman:
++
+[source,bash]
+----
+podman build -t mandelbrot-service .
+----
++
+This command will build the container image using the `Containerfile` in the current directory and tag it as `mandelbrot-service`.
+
+. Run the container using Podman. Replace `<port>` with the desired port number on your local machine, which will be mapped to the internal container port:
++
+[source,bash]
+----
+podman run -p <port>:8000 --name mandelbrot-service-instance mandelbrot-service
+----
++
+The application should now be running inside the container, and you can access it by navigating to `http://localhost:<port>/mandelbrot` in your web browser or using a tool like `curl`. To include the `max_iter` parameter in your request, append it to the URL, like this: `http://localhost:<port>/mandelbrot/{max-iter}`.
++
+To stop the container, run:
++
+[source,bash]
+----
+podman stop mandelbrot-service-instance
+----
++
+To remove the container after stopping it, run:
++
+[source,bash]
+----
+podman rm mandelbrot-service-instance
+----
