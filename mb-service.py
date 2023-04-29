@@ -9,7 +9,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description='Mandelbrot Service')
     parser.add_argument('--host', default='0.0.0.0', help='Host to bind the service (default: 0.0.0.0)')
     parser.add_argument('--port', type=int, default=8080, help='Port to bind the service (default: 8000)')
-    parser.add_argument('--worker-threads', type=int, default=4, help='Number of worker threads (default: 4)')
+    parser.add_argument('--worker-threads', type=int, default=40, help='Number of worker threads (default: 4)')
     return parser.parse_args()
 
 if __name__ == '__main__':
