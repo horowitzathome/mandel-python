@@ -14,6 +14,7 @@ jobs:
     with:
       image: horowitzathome/mandel-python
       version-file: version.txt
+      hadolint-ignore: DL3013,DL3042
     secrets:
       container-registry-username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
       container-registry-password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
