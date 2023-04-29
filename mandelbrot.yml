@@ -1,0 +1,8 @@
+parameters:
+  - name: max_iter
+    in: query
+    type: integer
+    required: true
+responses:
+  '200':
+    description: Successful response
